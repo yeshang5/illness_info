@@ -23,8 +23,22 @@ public class IllnessInfoService {
         illnessInfoMapper.delete(id);
     }
 
+    /**
+     * 获取所有数据
+     * @param illnessInfo
+     * @return
+     */
     public List<IllnessInfo> findList(IllnessInfo illnessInfo)
     {
         return illnessInfoMapper.findList(illnessInfo);
+    }
+
+    /**
+     * 获取最新一条数据
+     * @return
+     */
+    public IllnessInfo getLatestOne()
+    {
+        return illnessInfoMapper.getLatestOne();
     }
 }

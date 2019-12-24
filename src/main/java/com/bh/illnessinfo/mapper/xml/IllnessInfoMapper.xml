@@ -76,6 +76,13 @@
         WHERE id = #{id}
     </delete>
 
+    <select id="getLatestOne" resultType="com.bh.illnessinfo.entity.IllnessInfo">
+        SELECT
+            <include refid="Columns"/>
+        FROM fuck_ill a
+        ORDER BY a.ill_id desc
+        LIMIT 1
+    </select>
 
 </mapper>
 

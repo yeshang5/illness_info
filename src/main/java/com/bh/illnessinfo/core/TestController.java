@@ -18,18 +18,16 @@ public class TestController {
     private IllnessInfoService illnessInfoService;
 
     @GetMapping("test")
-    public List test(HttpServletRequest request)
+    public IllnessInfo test(HttpServletRequest request)
     {
         IllnessInfo illnessInfo=new IllnessInfo();
-        illnessInfo.setAge(23);
-        List<IllnessInfo> illnessInfoList=new ArrayList<>();
         try {
 
-            illnessInfoList=illnessInfoService.findList(illnessInfo);
+            illnessInfo=illnessInfoService.getLatestOne();
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-        return illnessInfoList;
+        return illnessInfo;
     }
 }

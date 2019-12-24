@@ -18,4 +18,10 @@ public interface IllnessInfoMapper {
 
     public List<IllnessInfo> findList(IllnessInfo illnessInfo);
 
+    /**
+     * 获取最新一条数据
+     * @return
+     */
+    public IllnessInfo getLatestOne();
+
 }
