@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.bh.illnessinfo.mapper.IllnessInfoMapper">
+
+    <sql id="Columns">
+    a.id AS "id",
+    a.ill_id AS "illId",
+    a.age AS "age",
+    a.sex AS "sex",
+    a.title AS "title",
+    a.ill_detail AS "illDetail",
+    a.doctor_answer AS "doctorAnswer",
+    a.time AS "time"
+</sql>
+
+
+    <select id="findList" resultType="com.bh.illnessinfo.entity.IllnessInfo" >
+        SELECT
+        <include refid="Columns"/>
+        FROM fuck_ill a
+        <where>
+            <if test="age != null and age != ''">
+                AND a.age = #{age}
+            </if>
+            <if test="sex != null and sex != ''">
+                AND a.sex = #{sex}
+            </if>
+            <if test="beginTime != null or endTime != null ">
+                <if test="beginTime != null">
+                    AND a.time >= #{beginTime}
+                </if>
+                <if test="endTime != null">
+                    AND a.time &lt;=  #{endTime}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO fuck_ill(
+        id,
+        ill_id,
+        age,
+        sex,
+        title,
+        ill_detail,
+        doctor_answer,
+        time
+        ) VALUES (
+        #{id},
+        #{ill_id},
+        #{age},
+        #{sex},
+        #{title},
+        #{illDetail},
+        #{doctorAnswer},
+        #{time}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE fuck_ill SET
+        ill_id = #{illId},
+        age = #{age},
+        sex = #{sex},
+        title = #{title},
+        ill_detail = #{illDetail},
+        doctor_answer = #{doctorAnswer},
+        time = #{time},
+        WHERE id = #{id}
+    </update>
+
+    <!--删除-->
+    <delete id="delete">
+        DELETE FROM fuck_ill
+        WHERE id = #{id}
+    </delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

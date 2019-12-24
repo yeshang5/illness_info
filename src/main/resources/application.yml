@@ -1,0 +1,16 @@
+mybatis:
+  mapper-locations: classpath:com/bh/illnessinfo/mapper/**/*Mapper.xml
+  type-aliases-package: com.bh.entity
+  config-location: classpath:config/mybatis-config.xml
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
